@@ -1,0 +1,27 @@
+# Gifted Minds Scholars
+
+> Gifted Minds Scholars (GMS) is a Pre-K through 5th grade tutoring program in Loganville, Georgia, USA, offering in-person and online tutoring in reading, math, writing and academic support. It is an educational tutoring program of BACB21Co, founded and led by Mrs. Wendy Bonnick, an educator with more than {{years}} years of experience in education.
+
+Key facts:
+- Grades served: Pre-K through 5th grade
+- Formats: in person in Loganville, Georgia; online for families anywhere
+- Programs: Reading & Literacy Development; Mathematics Tutoring; Writing & Language Arts; Academic Support & Enrichment (including support for dyslexia, ADHD and other learning differences)
+- Hours (by appointment, subject to availability): Sunday 3:30–6:30 PM; Monday 3:30–7:30 PM; Tuesday 3:30–6:30 PM; Thursday 3:30–6:30 PM (US Eastern Time)
+- Founder: Mrs. Wendy Bonnick, Founder & Educational Instructor. She believes her gift for teaching was given from God; her favorite scripture is Philippians 4:13, "I can do all things through Christ who strengthens me."
+- Enrollment: online inquiry form at {{siteUrl}}/enroll/ — families are contacted about scheduling and availability
+- Phone: {{phone}}
+- Email: {{email}}
+- Parent organization: BACB21Co (https://www.bacb21.org)
+- Pricing: not published; families are asked to inquire
+
+## Pages
+- [Home]({{siteUrl}}/): overview, programs, founder, schedule, parent feedback
+- [Programs]({{siteUrl}}/programs/): all four tutoring programs
+- [Reading & Literacy Tutoring]({{siteUrl}}/programs/reading-tutoring/): phonics, sight words, fluency, vocabulary, comprehension, spelling
+- [Math Tutoring]({{siteUrl}}/programs/math-tutoring/): number recognition, operations, place value, fractions, decimals, word problems
+- [Writing & Language Arts Tutoring]({{siteUrl}}/programs/writing-tutoring/): handwriting, sentences, grammar, punctuation, spelling, paragraphs, creative writing
+- [Academic Support & Enrichment]({{siteUrl}}/programs/academic-support/): individualized, multisensory, differentiated support; dyslexia, ADHD and learning differences; enrichment
+- [About Mrs. Wendy Bonnick]({{siteUrl}}/about/): founder background and philosophy
+- [FAQ]({{siteUrl}}/faq/): common parent questions with direct answers
+- [Enroll]({{siteUrl}}/enroll/): enrollment inquiry form
+- [Contact]({{siteUrl}}/contact/): phone, email, location and hours

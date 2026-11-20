@@ -1,0 +1,99 @@
+---
+{
+  "title": "Enroll Your Child | Gifted Minds Scholars Tutoring, Loganville GA",
+  "description": "Enroll your child with Gifted Minds Scholars. A two-minute inquiry for Pre-K–5th grade tutoring in reading, math and writing, in Loganville, GA or online.",
+  "path": "/enroll/",
+  "type": "enroll",
+  "priority": 0.9,
+  "breadcrumb": [["Enroll", "/enroll/"]]
+}
+---
+<section class="page-hero">
+  <div class="wrap">
+    <ol class="crumbs" aria-label="Breadcrumb"><li><a href="/">Home</a></li><li aria-current="page">Enroll</li></ol>
+    <p class="eyebrow">Student Enrollment</p>
+    <h1>Begin your scholar’s journey today</h1>
+    <p class="answer-first">To enroll at Gifted Minds Scholars, complete the short inquiry form below. Mrs. Bonnick will contact you about your child’s needs, scheduling and availability. Sessions are by appointment, in person in Loganville, Georgia or online.</p>
+  </div>
+</section>
+
+<section class="section-tight">
+  <div class="wrap form-shell">
+    <form class="form-card" data-enroll-form novalidate action="{{formEndpoint}}" method="post">
+      <h2>Enrollment inquiry</h2>
+      <p class="hint">It takes about two minutes. Fields marked optional can be skipped.</p>
+
+      <fieldset>
+        <legend>Parent or guardian</legend>
+        <div class="field"><label for="parent_name">Full name</label><input id="parent_name" name="parent_name" type="text" autocomplete="name" required></div>
+        <div class="grid-2">
+          <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" required></div>
+          <div class="field"><label for="phone">Phone</label><input id="phone" name="phone" type="tel" autocomplete="tel" required></div>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Your scholar</legend>
+        <div class="grid-2">
+          <div class="field"><label for="child_name">Child’s first name</label><input id="child_name" name="child_name" type="text" autocomplete="off" required></div>
+          <div class="field"><label for="grade">Grade</label>
+            <select id="grade" name="grade" required>
+              <option value="" selected disabled>Select grade</option>
+              <option>Pre-K</option><option>Kindergarten</option><option>1st grade</option><option>2nd grade</option><option>3rd grade</option><option>4th grade</option><option>5th grade</option>
+            </select>
+          </div>
+        </div>
+        <div class="field">
+          <span class="group-label" id="subjects-l">Subjects of interest</span>
+          <div class="chips" role="group" aria-labelledby="subjects-l">
+            <label class="chip"><input type="checkbox" name="subjects" value="Reading & literacy"><span>Reading &amp; literacy</span></label>
+            <label class="chip"><input type="checkbox" name="subjects" value="Math"><span>Math</span></label>
+            <label class="chip"><input type="checkbox" name="subjects" value="Writing & language arts"><span>Writing &amp; language arts</span></label>
+            <label class="chip"><input type="checkbox" name="subjects" value="Academic support & enrichment"><span>Academic support &amp; enrichment</span></label>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Scheduling</legend>
+        <div class="field">
+          <span class="group-label" id="format-l">Preferred format</span>
+          <div class="chips" role="radiogroup" aria-labelledby="format-l">
+            <label class="chip"><input type="radio" name="format" value="In person (Loganville)" required><span>In person</span></label>
+            <label class="chip"><input type="radio" name="format" value="Online"><span>Online</span></label>
+            <label class="chip"><input type="radio" name="format" value="Either"><span>Either</span></label>
+          </div>
+        </div>
+        <div class="field">
+          <span class="group-label" id="days-l">Preferred days <span class="opt">(optional)</span></span>
+          <div class="chips" role="group" aria-labelledby="days-l">
+            <label class="chip"><input type="checkbox" name="days" value="Sunday"><span>Sunday</span></label>
+            <label class="chip"><input type="checkbox" name="days" value="Monday"><span>Monday</span></label>
+            <label class="chip"><input type="checkbox" name="days" value="Tuesday"><span>Tuesday</span></label>
+            <label class="chip"><input type="checkbox" name="days" value="Thursday"><span>Thursday</span></label>
+          </div>
+        </div>
+        <div class="field"><label for="message">Anything we should know? <span class="opt">(optional)</span></label><textarea id="message" name="message" placeholder="Goals, areas of difficulty, learning differences, IEP or 504 plan, questions…"></textarea></div>
+      </fieldset>
+
+      <div class="hp" aria-hidden="true"><label for="company">Company</label><input id="company" name="company" type="text" tabindex="-1" autocomplete="off"></div>
+      <label class="consent"><input type="checkbox" name="consent" value="yes" required><span>I agree to be contacted by Gifted Minds Scholars about this inquiry by phone or email.</span></label>
+      <button class="btn btn-gold" type="submit">Send enrollment inquiry <svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg></button>
+      <p class="form-status" data-status role="status" aria-live="polite" tabindex="-1"></p>
+    </form>
+
+    <aside class="aside-card" aria-label="What happens next">
+      <h2>What happens next?</h2>
+      <ol class="steps" style="grid-template-columns:1fr;gap:12px">
+        <li style="padding:18px"><h3 style="font-size:1.05rem">We review your inquiry</h3><p>Mrs. Bonnick reads every inquiry personally.</p></li>
+        <li style="padding:18px"><h3 style="font-size:1.05rem">We contact you</h3><p>We’ll reach out about scheduling and availability.</p></li>
+        <li style="padding:18px"><h3 style="font-size:1.05rem">Sessions begin</h3><p>In person in Loganville or online from home.</p></li>
+      </ol>
+      <p style="margin:18px 0 6px;font-weight:700;color:var(--navy)">Prefer to talk?</p>
+      <ul class="aside-list">
+        <li><svg class="i" aria-hidden="true"><use href="#i-phone"/></svg><a href="tel:{{phoneE164}}">{{phone}}</a></li>
+        <li><svg class="i" aria-hidden="true"><use href="#i-mail"/></svg><a href="mailto:{{email}}">{{email}}</a></li>
+      </ul>
+    </aside>
+  </div>
+</section>

@@ -1,0 +1,13 @@
+{
+  "name": "gifted-minds-scholars",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Gifted Minds Scholars — Pre-K–5th grade tutoring website (Loganville, GA & online)",
+  "type": "module",
+  "scripts": {
+    "build": "node build.mjs",
+    "preview": "node build.mjs && npx --yes serve dist",
+    "images": "node scripts/make-images.mjs"
+  },
+  "engines": { "node": ">=18" }
+}

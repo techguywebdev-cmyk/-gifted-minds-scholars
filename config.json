@@ -1,0 +1,27 @@
+{
+  "siteUrl": "https://giftedmindsscholars.com",
+  "name": "Gifted Minds Scholars",
+  "shortName": "GMS",
+  "tagline": "Nurturing Young Minds, Building Bright Futures!",
+  "parentOrg": { "name": "BACB21Co", "url": "https://www.bacb21.org" },
+  "founder": "Mrs. Wendy Bonnick",
+  "founderName": "Wendy Bonnick",
+  "yearsExperience": 34,
+  "email": "wendybonnick8@gmail.com",
+  "phone": "(770) 648-3356",
+  "phoneE164": "+17706483356",
+  "city": "Loganville",
+  "region": "GA",
+  "regionName": "Georgia",
+  "country": "US",
+  "geo": { "lat": 33.8390, "lng": -83.9007 },
+  "grades": "Pre-K through 5th Grade",
+  "hours": [
+    { "day": "Sunday", "short": "Su", "opens": "15:30", "closes": "18:30", "label": "3:30 PM – 6:30 PM" },
+    { "day": "Monday", "short": "Mo", "opens": "15:30", "closes": "19:30", "label": "3:30 PM – 7:30 PM" },
+    { "day": "Tuesday", "short": "Tu", "opens": "15:30", "closes": "18:30", "label": "3:30 PM – 6:30 PM" },
+    { "day": "Thursday", "short": "Th", "opens": "15:30", "closes": "18:30", "label": "3:30 PM – 6:30 PM" }
+  ],
+  "formEndpoint": "",
+  "_formEndpointHelp": "Paste a Formspree / Web3Forms / Basin endpoint URL here to receive enrollment inquiries by email. Left empty, the form opens the visitor's email app with everything filled in, addressed to the email above."
+}
