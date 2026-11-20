@@ -33,6 +33,25 @@
     items.forEach((el) => el.classList.add('is-in'));
   }
 
+  // Count-up numbers
+  const counters = d.querySelectorAll('[data-count]');
+  if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const co = new IntersectionObserver((entries) => entries.forEach((en) => {
+      if (!en.isIntersecting) return;
+      const el = en.target; const end = +el.dataset.count; const t0 = performance.now();
+      const tick = (t) => { const k = Math.min(1, (t - t0) / 1400); el.textContent = Math.round(end * (1 - Math.pow(1 - k, 3))); if (k < 1) requestAnimationFrame(tick); };
+      requestAnimationFrame(tick); co.unobserve(el);
+    }), { threshold: 0.6 });
+    counters.forEach((el) => co.observe(el));
+  }
+
+  // Mobile quick-action bar appears after the hero
+  const mcta = d.querySelector('.mobile-cta');
+  if (mcta) {
+    const showBar = () => mcta.classList.toggle('is-visible', window.scrollY > 520 && (window.innerHeight + window.scrollY) < d.body.scrollHeight - 260);
+    showBar(); window.addEventListener('scroll', showBar, { passive: true });
+  }
+
   // Footer year
   d.querySelectorAll('[data-year]').forEach((el) => { el.textContent = new Date().getFullYear(); });
 

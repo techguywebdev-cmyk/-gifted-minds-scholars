@@ -27,6 +27,7 @@ const fill = (s) => s
   .replace(/\{\{phone\}\}/g, C.phone)
   .replace(/\{\{phoneE164\}\}/g, C.phoneE164)
   .replace(/\{\{years\}\}/g, String(C.yearsExperience))
+  .replace(/\{\{nearby\}\}/g, C.nearby.slice(0, -1).join(', ') + ' and ' + C.nearby.at(-1))
   .replace(/\{\{hoursTable\}\}/g, hoursTable())
   .replace(/\{\{formEndpoint\}\}/g, esc(C.formEndpoint || ''));
 
@@ -129,11 +130,25 @@ function schemaFor(m, html) {
     speakable: { '@type': 'SpeakableSpecification', cssSelector: ['.answer-first', 'h1'] },
     ...(m.type === 'about' ? { '@type': ['WebPage', 'AboutPage'], mainEntity: { '@id': PERSON_ID } } : {}),
     ...(m.type === 'contact' ? { '@type': ['WebPage', 'ContactPage'] } : {}),
+    ...(m.type === 'resources' ? { '@type': ['WebPage', 'CollectionPage'] } : {}),
+    ...(m.published ? { datePublished: m.published } : {}),
     ...(m.type === 'faq' ? { '@type': ['WebPage', 'FAQPage'], ...faqPage(html) } : {}),
   });
   if (m.path === '/') graph.push({ '@type': 'WebSite', '@id': `${SITE}/#website`, url: `${SITE}/`, name: C.name, publisher: { '@id': ORG_ID }, inLanguage: 'en-US' });
   else graph.push({ '@type': 'WebSite', '@id': `${SITE}/#website`, url: `${SITE}/`, name: C.name });
   if (m.serviceName) graph.push(service(m));
+  if (m.type === 'article') graph.push({
+    '@type': 'BlogPosting', '@id': `${SITE}${m.path}#article`, headline: m.h1 || m.title, description: m.description,
+    datePublished: m.published, dateModified: m.updated || m.published, inLanguage: 'en-US',
+    author: { '@id': ORG_ID }, publisher: { '@id': ORG_ID }, image: `${SITE}/assets/img/og-image.png`,
+    mainEntityOfPage: { '@id': `${SITE}${m.path}#webpage` }, articleSection: 'Parent Resources',
+    keywords: m.keywords || undefined, about: (m.about || []).map((a) => ({ '@type': 'Thing', name: a })),
+    wordCount: html.replace(/<[^>]+>/g, ' ').split(/\s+/).filter(Boolean).length,
+  });
+  if (m.type === 'local') graph.push({
+    '@type': 'Place', name: `${C.city}, ${C.regionName}`, geo: { '@type': 'GeoCoordinates', latitude: C.geo.lat, longitude: C.geo.lng },
+    containedInPlace: { '@type': 'State', name: C.regionName },
+  });
   if (m.breadcrumb) graph.push(breadcrumb(m.breadcrumb));
 
   return JSON.stringify({ '@context': 'https://schema.org', '@graph': graph });
@@ -143,7 +158,7 @@ function schemaFor(m, html) {
 const NAV = [
   ['Programs', '/programs/'],
   ['About', '/about/'],
-  ['Schedule', '/#schedule'],
+  ['Resources', '/resources/'],
   ['FAQ', '/faq/'],
   ['Contact', '/contact/'],
 ];
@@ -170,7 +185,11 @@ function layout(m, body) {
 <meta name="geo.placename" content="${C.city}, ${C.regionName}">
 <meta name="geo.position" content="${C.geo.lat};${C.geo.lng}">
 <meta name="ICBM" content="${C.geo.lat}, ${C.geo.lng}">
-<meta property="og:type" content="website">
+<meta property="og:type" content="${m.type === 'article' ? 'article' : 'website'}">${m.type === 'article' ? `
+<meta property="article:published_time" content="${m.published}">
+<meta property="article:modified_time" content="${m.updated || m.published}">` : ''}${C.googleVerification ? `
+<meta name="google-site-verification" content="${esc(C.googleVerification)}">` : ''}${C.bingVerification ? `
+<meta name="msvalidate.01" content="${esc(C.bingVerification)}">` : ''}
 <meta property="og:site_name" content="${esc(C.name)}">
 <meta property="og:title" content="${esc(m.ogTitle || m.title)}">
 <meta property="og:description" content="${esc(m.description)}">
@@ -192,7 +211,9 @@ function layout(m, body) {
 <link rel="preload" href="/assets/fonts/jakarta.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/assets/css/styles.css?v=${BUILD_ID}">
 ${m.preload || ''}
-<script type="application/ld+json">${schemaFor(m, body)}</script>
+<script type="application/ld+json">${schemaFor(m, body)}</script>${C.ga4Id ? `
+<script async src="https://www.googletagmanager.com/gtag/js?id=${C.ga4Id}"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','${C.ga4Id}');</script>` : ''}
 </head>
 <body class="page-${m.type || 'page'}">
 ${sprite}
@@ -236,6 +257,8 @@ ${body}
         <li><a href="/programs/math-tutoring/">Mathematics</a></li>
         <li><a href="/programs/writing-tutoring/">Writing &amp; Language Arts</a></li>
         <li><a href="/programs/academic-support/">Academic Support &amp; Enrichment</a></li>
+        <li><a href="/tutoring-loganville-ga/">Tutoring in Loganville, GA</a></li>
+        <li><a href="/resources/">Parent Resources</a></li>
       </ul>
     </div>
     <div>
@@ -257,6 +280,7 @@ ${body}
     <ul class="footer-mini"><li><a href="/about/">About</a></li><li><a href="/faq/">FAQ</a></li><li><a href="/enroll/">Enroll</a></li><li><a href="/contact/">Contact</a></li></ul>
   </div>
 </footer>
+${m.type === 'enroll' ? '' : `<div class="mobile-cta" aria-label="Quick actions"><a class="btn btn-ghost btn-sm" href="tel:${C.phoneE164}"><svg class="i" aria-hidden="true"><use href="#i-phone"/></svg>Call</a><a class="btn btn-gold btn-sm" href="/enroll/">Enroll Now</a></div>`}
 <script src="/assets/js/config.js?v=${BUILD_ID}" defer></script>
 <script src="/assets/js/main.js?v=${BUILD_ID}" defer></script>
 </body>
@@ -278,7 +302,7 @@ for (const file of walk(join(SRC, 'pages')).filter((f) => f.endsWith('.html'))) 
   const rel = relative(join(SRC, 'pages'), file);
   const outPath = rel === '404.html' ? '404.html' : rel.replace(/index\.html$/, '').replace(/\.html$/, '/') + 'index.html';
   write(join(OUT, outPath), layout(meta, body));
-  pages.push(meta);
+  pages.push({ ...meta, html: body });
 }
 
 // assets + root files
@@ -299,12 +323,26 @@ if (existsSync(join(SRC, 'public'))) {
 // form config for the browser
 write(join(OUT, 'assets/js/config.js'), `window.GMS=${JSON.stringify({ email: C.email, endpoint: C.formEndpoint || '' })};`);
 
-// sitemap
+// sitemap (with image entries)
 const indexable = pages.filter((p) => !p.noindex).sort((a, b) => (b.priority || 0.5) - (a.priority || 0.5));
+const imgsFor = (p) => [...new Set([...p.html.matchAll(/<img[^>]+src="(\/[^"]+)"[^>]*alt="([^"]*)"/g)].map((x) => x[1] + '|' + x[2]))].slice(0, 5);
 write(join(OUT, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${indexable.map((p) => `  <url><loc>${SITE}${p.path}</loc><lastmod>${TODAY}</lastmod><priority>${(p.priority || 0.5).toFixed(1)}</priority></url>`).join('\n')}
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+${indexable.map((p) => `  <url><loc>${SITE}${p.path}</loc><lastmod>${p.updated || p.published || TODAY}</lastmod><priority>${(p.priority || 0.5).toFixed(1)}</priority>${imgsFor(p).map((s) => { const [u, a] = s.split('|'); return `<image:image><image:loc>${SITE}${u}</image:loc><image:title>${esc(a)}</image:title></image:image>`; }).join('')}</url>`).join('\n')}
 </urlset>
 `);
+
+// IndexNow key file (Bing, Yandex, etc.)
+if (C.indexNowKey) write(join(OUT, `${C.indexNowKey}.txt`), C.indexNowKey);
+
+// llms-full.txt — the full text of every page, for AI assistants
+const toText = (h) => h
+  .replace(/<script[\s\S]*?<\/script>/g, '').replace(/<svg[\s\S]*?<\/svg>/g, '')
+  .replace(/<(h[1-3])[^>]*>([\s\S]*?)<\/\1>/g, (_, t, s) => `\n\n${t === 'h1' ? '#' : t === 'h2' ? '##' : '###'} ${s}\n`)
+  .replace(/<li[^>]*>/g, '\n- ').replace(/<(p|summary|tr|blockquote|figcaption)[^>]*>/g, '\n').replace(/<\/(td|th)>/g, ' ')
+  .replace(/<[^>]+>/g, '').replace(/&amp;/g, '&').replace(/&nbsp;/g, ' ').replace(/&#39;|&rsquo;/g, "'")
+  .replace(/[ \t]+/g, ' ').replace(/\n\s*\n\s*\n+/g, '\n\n').trim();
+write(join(OUT, 'llms-full.txt'), `# ${C.name} — full site text\n\nSource: ${SITE}/\nUpdated: ${TODAY}\n\n` +
+  indexable.map((p) => `---\nURL: ${SITE}${p.path}\n\n${toText(p.html)}`).join('\n\n') + '\n');
 
 console.log(`Built ${pages.length} pages → dist/  (site URL: ${SITE})`);

@@ -44,3 +44,8 @@ Before launch:
 - `llms.txt` (facts for AI assistants), and `robots.txt` that explicitly allows AI search crawlers
 - Self-hosted fonts, preloaded hero image, responsive WebP and lazy-loaded images, so Core Web Vitals stay fast
 - Semantic HTML, skip link, keyboard-friendly navigation and reduced-motion support
+- A local landing page (`/tutoring-loganville-ga/`) and Parent Resources articles with BlogPosting schema
+- An image sitemap, `llms-full.txt` (the full site text for AI assistants) and an IndexNow key file
+- Config switches for Search Console and Bing verification, plus GA4
+
+See **SEO-PLAYBOOK.md** for the launch and off-site steps (Google Business Profile, reviews, citations).
