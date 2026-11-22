@@ -29,7 +29,8 @@ const fill = (s) => s
   .replace(/\{\{years\}\}/g, String(C.yearsExperience))
   .replace(/\{\{nearby\}\}/g, C.nearby.slice(0, -1).join(', ') + ' and ' + C.nearby.at(-1))
   .replace(/\{\{hoursTable\}\}/g, hoursTable())
-  .replace(/\{\{formEndpoint\}\}/g, esc(C.formEndpoint || ''));
+  .replace(/\{\{formEndpoint\}\}/g, esc(C.formEndpoint || ''))
+  .replace(/\{\{art:([a-z-]+)\}\}/g, (_, n) => fill(readFileSync(join(SRC, 'partials', 'art', `${n}.html`), 'utf8')));
 
 function hoursTable() {
   return `<table class="hours"><caption class="sr-only">Tutoring hours</caption><tbody>${
@@ -207,7 +208,7 @@ function layout(m, body) {
 <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="manifest" href="/site.webmanifest">
-<link rel="preload" href="/assets/fonts/fraunces.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/playfair.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/jakarta.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/assets/css/styles.css?v=${BUILD_ID}">
 ${m.preload || ''}

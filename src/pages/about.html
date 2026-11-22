@@ -8,24 +8,26 @@
   "breadcrumb": [["About", "/about/"]]
 }
 ---
-<section class="page-hero">
-  <div class="wrap">
-    <ol class="crumbs" aria-label="Breadcrumb"><li><a href="/">Home</a></li><li aria-current="page">About</li></ol>
-    <p class="eyebrow">About Gifted Minds Scholars</p>
-    <h1>Every child has a gift. Mrs. Bonnick helps them find it.</h1>
-    <p class="answer-first">Gifted Minds Scholars was founded by <strong>Mrs. Wendy Bonnick</strong>, an educator with more than {{years}} years of experience in education. She tutors children in Pre-K through 5th grade in reading, math and writing, in person in Loganville, Georgia and online.</p>
+<section class="page-hero has-art art-about">
+  <div class="wrap ph-grid">
+    <div class="ph-copy">
+      <ol class="crumbs" aria-label="Breadcrumb"><li><a href="/">Home</a></li><li aria-current="page">About</li></ol>
+      <p class="eyebrow">About Gifted Minds Scholars</p>
+      <h1>Every child has a gift. Mrs. Bonnick helps them find it.</h1>
+      <p class="answer-first">Gifted Minds Scholars was founded by <strong>Mrs. Wendy Bonnick</strong>, an educator with more than {{years}} years of experience in education. She tutors children in Pre-K through 5th grade in reading, math and writing, in person in Loganville, Georgia and online.</p>
+    </div>
+    <div class="ph-art">{{art:about}}</div>
   </div>
 </section>
 
 <section class="section-tight">
   <div class="wrap about-intro">
-    <figure class="founder-photo reveal" style="margin:0 auto">
-      <picture>
-        <source type="image/webp" srcset="/assets/img/wendy-bonnick-480.webp 480w, /assets/img/wendy-bonnick-880.webp 880w" sizes="(max-width: 900px) 80vw, 420px">
-        <img src="/assets/img/wendy-bonnick-880.jpg" srcset="/assets/img/wendy-bonnick-480.jpg 480w, /assets/img/wendy-bonnick-880.jpg 880w" sizes="(max-width: 900px) 80vw, 420px" width="880" height="1100" alt="Mrs. Wendy Bonnick in her Gifted Minds Scholars classroom, with reading and math posters on the wall" fetchpriority="high">
-      </picture>
-      <figcaption><strong>Mrs. Wendy Bonnick</strong>Founder &amp; Educational Instructor</figcaption>
-    </figure>
+    <div class="quote-card reveal">
+      <svg class="i qc-mark" aria-hidden="true"><use href="#i-quote"/></svg>
+      <p>Every child has a gift. My passion is helping each scholar discover it, develop it, and achieve greatness.</p>
+      <span>— Mrs. Wendy Bonnick</span>
+      <ul class="qc-facts"><li><strong>{{years}}+</strong>years in education</li><li><strong>Pre-K–5</strong>grades served</li></ul>
+    </div>
     <div class="prose reveal">
       <h2>A calling, not just a career</h2>
       <p class="gift" style="color:var(--navy)">“My gift for teaching was <span style="color:var(--gold-ink)">given from God.</span>”</p>

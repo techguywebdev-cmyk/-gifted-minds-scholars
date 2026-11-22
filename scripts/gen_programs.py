@@ -1,7 +1,7 @@
 # One-off generator for the program pages (src/pages/programs/*.html). Edit data, re-run.
 import json, html
 P = [
- dict(slug="reading-tutoring", icon="i-book", short="Reading & Literacy",
+ dict(slug="reading-tutoring", art="reading", icon="i-book", short="Reading & Literacy",
   name="Reading & Literacy Tutoring", serviceType="Reading tutoring",
   title="Reading Tutoring, Pre-K–5th Grade | Loganville GA & Online | GMS",
   h1="Reading tutoring that builds confident, fluent readers",
@@ -11,7 +11,7 @@ P = [
   how="Each session starts from where your child is right now. Mrs. Bonnick builds the foundations step by step — sounds, then words, then sentences and stories — and gives plenty of guided practice so reading starts to feel easy and enjoyable, not stressful.",
   signs=["Has trouble sounding out new words","Reads slowly or guesses at words","Avoids reading or gets frustrated with books","Struggles to remember or explain what they read","Finds spelling especially hard"],
  ),
- dict(slug="math-tutoring", icon="i-calc", short="Mathematics",
+ dict(slug="math-tutoring", art="math", icon="i-calc", short="Mathematics",
   name="Mathematics Tutoring", serviceType="Math tutoring",
   title="Math Tutoring, Pre-K–5th Grade | Loganville GA & Online | GMS",
   h1="Math tutoring that turns “I can’t” into “I’ve got this”",
@@ -21,7 +21,7 @@ P = [
   how="Math builds on itself, so small gaps can grow quickly. Sessions find and fill those gaps, use hands-on and visual explanations so concepts make sense, and practice problem-solving until your child can explain their thinking with confidence.",
   signs=["Gets anxious or upset about math homework","Hasn’t mastered basic facts for their grade","Struggles with word problems","Finds place value, fractions or decimals confusing","Can follow steps but doesn’t understand why"],
  ),
- dict(slug="writing-tutoring", icon="i-pencil", short="Writing & Language Arts",
+ dict(slug="writing-tutoring", art="writing", icon="i-pencil", short="Writing & Language Arts",
   name="Writing & Language Arts Tutoring", serviceType="Writing tutoring",
   title="Writing Tutoring, Pre-K–5th Grade | Loganville GA & Online | GMS",
   h1="Writing tutoring that helps children say what they mean",
@@ -31,7 +31,7 @@ P = [
   how="Good writing grows from clear thinking and solid mechanics. Sessions work on both — forming letters and sentences correctly, then organizing ideas into paragraphs and stories — so your child can write with clarity, accuracy and their own voice.",
   signs=["Handwriting is hard to read or slow","Writes very little or avoids writing tasks","Sentences run on or lack punctuation","Has great ideas but struggles to get them on paper","Spelling errors make writing hard to follow"],
  ),
- dict(slug="academic-support", icon="i-bulb", short="Academic Support & Enrichment",
+ dict(slug="academic-support", art="support", icon="i-bulb", short="Academic Support & Enrichment",
   name="Academic Support & Enrichment", serviceType="Learning support and enrichment",
   title="Dyslexia, ADHD & Learning Support Tutoring | Loganville GA | GMS",
   h1="Academic support for every kind of learner",
@@ -49,12 +49,15 @@ for p in P:
               breadcrumb=[["Programs","/programs/"],[p["short"],f"/programs/{p['slug']}/"]],
               serviceName=p["name"],serviceType=p["serviceType"],description_service=p["answer"])
     meta["description"]=p["desc"]
-    body=f'''<section class="page-hero">
-  <div class="wrap">
-    <ol class="crumbs" aria-label="Breadcrumb"><li><a href="/">Home</a></li><li><a href="/programs/">Programs</a></li><li aria-current="page">{html.escape(p["short"])}</li></ol>
-    <p class="eyebrow">{html.escape(p["name"])} · Pre-K–5th Grade</p>
-    <h1>{p["h1"]}</h1>
-    <p class="answer-first">{html.escape(p["answer"])}</p>
+    body=f'''<section class="page-hero has-art art-{p["art"]}">
+  <div class="wrap ph-grid">
+    <div class="ph-copy">
+      <ol class="crumbs" aria-label="Breadcrumb"><li><a href="/">Home</a></li><li><a href="/programs/">Programs</a></li><li aria-current="page">{html.escape(p["short"])}</li></ol>
+      <p class="eyebrow">{html.escape(p["name"])} · Pre-K–5th Grade</p>
+      <h1>{p["h1"]}</h1>
+      <p class="answer-first">{html.escape(p["answer"])}</p>
+    </div>
+    <div class="ph-art">{{{{art:{p["art"]}}}}}</div>
   </div>
 </section>
 
@@ -94,7 +97,7 @@ for p in P:
   <div class="wrap">
     <h2 style="font-size:1.6rem;margin-bottom:20px">Explore other programs</h2>
     <div class="related">
-''' + "\n".join(f'      <a href="/programs/{o["slug"]}/"><span class="ico"><svg class="i" aria-hidden="true"><use href="#{o["icon"]}"/></svg></span>{html.escape(o["short"])}</a>' for o in others) + '''
+''' + "\n".join(f'      <a class="rel-{o["art"]}" href="/programs/{o["slug"]}/"><span class="ico"><svg class="i" aria-hidden="true"><use href="#{o["icon"]}"/></svg></span>{html.escape(o["short"])}</a>' for o in others) + '''
     </div>
   </div>
 </section>

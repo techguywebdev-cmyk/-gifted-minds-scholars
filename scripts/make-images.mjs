@@ -7,13 +7,13 @@ const root = new URL('..', import.meta.url).pathname;
 const logo = readFileSync(root + 'src/public/favicon.svg', 'utf8');
 const photo = 'data:image/jpeg;base64,' + readFileSync(root + 'src/assets/img/wendy-bonnick-880.jpg').toString('base64');
 const f = (n) => 'data:font/woff2;base64,' + readFileSync(root + 'src/assets/fonts/' + n).toString('base64');
-const fonts = `<style>@font-face{font-family:Fraunces;font-weight:100 900;src:url(${f('fraunces.woff2')})}@font-face{font-family:'Plus Jakarta Sans';font-weight:200 800;src:url(${f('jakarta.woff2')})}@font-face{font-family:Caveat;font-weight:700;src:url(${f('caveat.woff2')})}</style>`;
+const fonts = `<style>@font-face{font-family:'Playfair Display';font-weight:400 900;src:url(${f('playfair.woff2')})}@font-face{font-family:'Playfair Display';font-style:italic;font-weight:400 900;src:url(${f('playfair-italic.woff2')})}@font-face{font-family:'Plus Jakarta Sans';font-weight:200 800;src:url(${f('jakarta.woff2')})}@font-face{font-family:Caveat;font-weight:700;src:url(${f('caveat.woff2')})}</style>`;
 const og = `<!doctype html><html><head>${fonts}<style>
 *{margin:0;box-sizing:border-box}body{width:1200px;height:630px;background:#fbf7ee;font-family:'Plus Jakarta Sans',sans-serif;position:relative;overflow:hidden}
 .glow{position:absolute;width:800px;height:800px;right:-260px;top:-330px;background:radial-gradient(circle,rgba(241,212,140,.65),transparent 65%)}
 .l{position:absolute;left:72px;top:70px;width:640px}
-.brand{display:flex;align-items:center;gap:16px;color:#14245c;font-family:Fraunces,serif;font-weight:600;font-size:30px}.brand svg{width:64px;height:64px}
-h1{font-family:Fraunces,serif;font-weight:600;font-size:64px;line-height:1.05;color:#14245c;margin:46px 0 22px;letter-spacing:-1.5px}h1 em{color:#8a6210;font-weight:600}
+.brand{display:flex;align-items:center;gap:16px;color:#14245c;font-family:'Playfair Display',serif;font-weight:600;font-size:30px}.brand svg{width:64px;height:64px}
+h1{font-family:'Playfair Display',serif;font-weight:600;font-size:64px;line-height:1.05;color:#14245c;margin:46px 0 22px;letter-spacing:-1.5px}h1 em{color:#8a6210;font-weight:600}
 p{font-size:25px;color:#545a76;line-height:1.4}
 .tags{position:absolute;left:72px;bottom:64px;display:flex;gap:12px}.tags span{background:#14245c;color:#fff;padding:12px 20px;border-radius:99px;font-weight:800;font-size:19px}.tags span.g{background:#d9a63a;color:#0d1940}
 .ph{position:absolute;right:70px;top:60px;width:380px;height:510px;border-radius:190px 190px 24px 24px;overflow:hidden;border:8px solid #fff;box-shadow:0 30px 60px -25px rgba(13,25,64,.45)}.ph img{width:100%;height:100%;object-fit:cover;object-position:50% 30%}
