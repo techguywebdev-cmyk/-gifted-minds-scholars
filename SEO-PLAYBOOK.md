@@ -15,7 +15,7 @@ The website side is finished: fast pages, structured data, local landing page, F
 - [ ] Primary category: **Tutoring service**. Secondary: **Educational consultant** or **Reading tutor** if offered.
 - [ ] Service area: Loganville, Grayson, Snellville, Monroe, Between, Walnut Grove, Social Circle, Dacula, Lawrenceville. Hide the street address if she tutors from home.
 - [ ] Phone **(770) 648-3356** and website URL, exactly as shown on the site.
-- [ ] Hours: Sun 3:30–6:30, Mon 3:30–7:30, Tue 3:30–6:30, Thu 3:30–6:30.
+- [ ] Hours: Sun 3:30–6:30, Mon 3:30–6:30, Tue 3:30–6:30, Thu 3:30–7:30.
 - [ ] Description: use the "at a glance" facts and mention Pre-K–5th grade, reading, math, writing, in person and online.
 - [ ] Add each program under **Services**.
 - [ ] Upload 10+ real photos: Wendy, the classroom, reading and math wall displays, learning materials. No children's faces without written parent permission.

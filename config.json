@@ -34,8 +34,8 @@
       "day": "Monday",
       "short": "Mo",
       "opens": "15:30",
-      "closes": "19:30",
-      "label": "3:30 PM – 7:30 PM"
+      "closes": "18:30",
+      "label": "3:30 PM – 6:30 PM"
     },
     {
       "day": "Tuesday",
@@ -48,8 +48,8 @@
       "day": "Thursday",
       "short": "Th",
       "opens": "15:30",
-      "closes": "18:30",
-      "label": "3:30 PM – 6:30 PM"
+      "closes": "19:30",
+      "label": "3:30 PM – 7:30 PM"
     }
   ],
   "formEndpoint": "",

@@ -6,7 +6,7 @@ Key facts:
 - Grades served: Pre-K through 5th grade
 - Formats: in person in Loganville, Georgia (convenient to {{nearby}}); online for families anywhere
 - Programs: Reading & Literacy Development; Mathematics Tutoring; Writing & Language Arts; Academic Support & Enrichment (including support for dyslexia, ADHD and other learning differences)
-- Hours (by appointment, subject to availability): Sunday 3:30–6:30 PM; Monday 3:30–7:30 PM; Tuesday 3:30–6:30 PM; Thursday 3:30–6:30 PM (US Eastern Time)
+- Hours (by appointment, subject to availability): Sunday 3:30–6:30 PM; Monday 3:30–6:30 PM; Tuesday 3:30–6:30 PM; Thursday 3:30–7:30 PM (US Eastern Time)
 - Founder: Mrs. Wendy Bonnick, Founder & Educational Instructor. She believes her gift for teaching was given from God; her favorite scripture is Philippians 4:13, "I can do all things through Christ who strengthens me."
 - Enrollment: online inquiry form at {{siteUrl}}/enroll/ — families are contacted about scheduling and availability
 - Phone: {{phone}}
