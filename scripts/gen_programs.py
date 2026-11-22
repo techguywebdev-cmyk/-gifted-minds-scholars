@@ -1,5 +1,6 @@
 # One-off generator for the program pages (src/pages/programs/*.html). Edit data, re-run.
 import json, html
+PHOTOS={'reading-tutoring': ('class-reading-rug', 1334, 'A young student practicing letters beside a picture book on the reading rug during a reading session', 'Letters, sounds and stories on the reading rug'), 'math-tutoring': ('class-worksheet', 1334, 'A student concentrating on a fractions worksheet during a math session', 'Working through fractions, one step at a time'), 'writing-tutoring': ('class-worksheet', 1334, 'A student practicing spelling and handwriting during a writing session', 'Spelling and handwriting practice'), 'academic-support': ('class-hands-on', 1214, 'A student working on a hands-on, multisensory learning activity on the reading rug', 'Hands-on, multisensory learning')}
 P = [
  dict(slug="reading-tutoring", art="reading", icon="i-book", short="Reading & Literacy",
   name="Reading & Literacy Tutoring", serviceType="Reading tutoring",
@@ -70,6 +71,10 @@ for p in P:
       </ul>
       <h2>How do the sessions work?</h2>
       <p>{html.escape(p["how"])}</p>
+      <figure class="photo-figure">
+        <picture><source type="image/webp" srcset="/assets/img/{PHOTOS[p["slug"]][0]}-560.webp 560w, /assets/img/{PHOTOS[p["slug"]][0]}-1000.webp 1000w" sizes="(max-width: 900px) 92vw, 700px"><img src="/assets/img/{PHOTOS[p["slug"]][0]}-1000.jpg" width="1000" height="{PHOTOS[p["slug"]][1]}" loading="lazy" decoding="async" alt="{PHOTOS[p["slug"]][2]}"></picture>
+        <figcaption>{PHOTOS[p["slug"]][3]}</figcaption>
+      </figure>
       <p>Tutoring is available <strong>in person in Loganville, Georgia</strong> or <strong>online</strong>, and every session is scheduled by appointment. Parents receive regular communication and progress updates.</p>
       <h2>Could my child benefit?</h2>
       <p>Families often reach out when their child:</p>
