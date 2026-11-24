@@ -909,6 +909,21 @@ a.contact-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg)
   .fund p { font-size: .92rem; }
 }
 
+/* ---------- compact mobile: eligibility ---------- */
+@media (max-width: 760px) {
+  .elig-grid { grid-template-columns: 1fr; gap: 0; background: #fff; border: 1px solid var(--line); border-radius: 20px; box-shadow: var(--shadow); overflow: hidden; }
+  .elig { display: grid; grid-template-columns: 52px 1fr; column-gap: 16px; border: 0; border-radius: 0; box-shadow: none !important; transform: none !important; padding: 18px 20px; }
+  .elig + .elig { border-top: 1px solid var(--line); }
+  .elig-ico { grid-row: span 2; width: 52px; height: 52px; margin: 2px 0 0; border-radius: 50%; }
+  .elig:nth-child(2) .elig-ico { background: var(--gold-pale); color: var(--gold-ink); }
+  .elig:nth-child(3) .elig-ico { background: var(--navy); color: #fff; }
+  .elig:nth-child(4) .elig-ico { background: #fbe6df; color: var(--coral); }
+  .elig h3 { font-size: 1.15rem; margin: 0 0 2px; }
+  .elig p { font-size: .92rem; }
+  .levels { gap: 8px; margin-top: 20px; }
+  .levels li { font-size: .82rem; padding: 8px 14px; }
+}
+
 /* ---------- reveal ---------- */
 .reveal { opacity: 0; transform: translateY(18px); transition: opacity .7s ease, transform .7s ease; }
 .reveal.is-in { opacity: 1; transform: none; }
