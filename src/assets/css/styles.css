@@ -864,20 +864,22 @@ a.contact-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg)
 @media (max-width: 900px) {
   .art-memorial, .art-scholarship { padding-top: 24px; text-align: center; }
   .art-memorial .ph-grid, .art-scholarship .ph-grid { gap: 18px; }
-  .art-memorial .ph-art, .art-scholarship .ph-art { order: -1; max-width: 250px; }
+  .art-memorial .ph-art, .art-scholarship .ph-art { order: -1; max-width: 240px; }
   .art-scholarship .ph-art { max-width: 300px; margin-bottom: 10px; }
   .art-memorial .art-stack, .art-scholarship .art-stack { padding-bottom: 6px; }
   .art-memorial .memorial-frame { width: 100%; }
   .art-memorial .crumbs, .art-scholarship .crumbs { justify-content: center; margin-bottom: 14px; }
   .art-memorial .eyebrow, .art-scholarship .eyebrow { display: none; }
   .art-memorial .bacb-pill, .art-scholarship .bacb-pill { margin: 0 auto 14px; }
-  .art-memorial h1, .art-scholarship h1 { font-size: clamp(2rem, 8.4vw, 2.6rem); margin-bottom: 16px; }
-  .art-memorial .answer-first, .art-scholarship .answer-first { text-align: left; font-size: 1rem; line-height: 1.65; background: rgba(255,255,255,.78); border: 1px solid rgba(91,99,176,.18); border-left: 1px solid rgba(91,99,176,.18); border-top: 4px solid var(--gold); border-radius: 18px; padding: 18px 18px 16px; box-shadow: 0 18px 40px -28px rgba(20,36,92,.45); }
-  .art-memorial .btn-row, .art-scholarship .btn-row { flex-wrap: nowrap; gap: 10px; margin-top: 20px !important; }
-  .art-memorial .btn-row .btn, .art-scholarship .btn-row .btn { flex: 1 1 0; padding: .95em .8em; font-size: .9rem; white-space: nowrap; }
+  .art-memorial h1, .art-scholarship h1 { font-size: clamp(1.9rem, 8vw, 2.4rem); margin-bottom: 14px; }
+  .art-memorial .answer-first, .art-scholarship .answer-first { border: 0; padding: 0; margin: 0 auto; max-width: 34ch; font-size: 1rem; line-height: 1.7; color: var(--muted); background: none; box-shadow: none; }
+  .art-memorial .answer-first::before, .art-scholarship .answer-first::before { display: block; width: 40px; height: 3px; margin: 0 auto 18px; content: ''; background: var(--gold); border-radius: 3px; }
+  .art-memorial .answer-first strong, .art-scholarship .answer-first strong { color: var(--navy); }
+  .art-memorial .btn-row, .art-scholarship .btn-row { flex-direction: column; align-items: center; gap: 4px; margin-top: 26px !important; }
+  .art-memorial .btn-row .btn-gold, .art-scholarship .btn-row .btn-gold { width: 100%; max-width: 340px; background: var(--navy); color: #fff; box-shadow: 0 14px 28px -14px rgba(20,36,92,.6); padding: 1.05em 1.4em; font-size: 1rem; }
+  .art-memorial .btn-row .btn-gold:hover, .art-scholarship .btn-row .btn-gold:hover { background: var(--navy-deep); color: #fff; }
+  .art-memorial .btn-row .btn-ghost, .art-scholarship .btn-row .btn-ghost { border: 0; background: none; padding: .9em 1em; font-size: .95rem; color: var(--navy); text-decoration: underline; text-decoration-color: var(--gold); text-decoration-thickness: 2px; text-underline-offset: 5px; }
 }
-@media (max-width: 560px) { .sch-facts dd { font-size: 1.6rem; } }
-@media (max-width: 380px) { .art-memorial .btn-row .btn, .art-scholarship .btn-row .btn { font-size: .82rem; padding: .9em .6em; } }
 
 /* ---------- reveal ---------- */
 .reveal { opacity: 0; transform: translateY(18px); transition: opacity .7s ease, transform .7s ease; }
