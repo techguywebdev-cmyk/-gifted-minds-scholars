@@ -25,6 +25,7 @@ Key facts:
 - [FAQ]({{siteUrl}}/faq/): common parent questions with direct answers
 - [Enroll]({{siteUrl}}/enroll/): enrollment inquiry form
 - [Contact]({{siteUrl}}/contact/): phone, email, location and hours
+- [Brian A.C. Bonnick Scholarship]({{siteUrl}}/scholarship/): one-time $1,000 award for tuition, books or educational expenses; elementary through college; open Dec 15, 2026, deadline Apr 1, 2027; apply at https://www.bacb21.org/scholarship/
 - [BACB21]({{siteUrl}}/bacb21/): parent organization BACB21Co, created by Wendy Bonnick to carry on the legacy of her late son, Brian A.C. Bonnick (2000–2021), founder of the Perfectly Stated apparel brand; funds sponsor less fortunate children with books, lunch and tuition
 - [Tutoring in Loganville, GA]({{siteUrl}}/tutoring-loganville-ga/): local in-person tutoring, nearby communities served, hours
 - [Parent Resources]({{siteUrl}}/resources/): guides for parents

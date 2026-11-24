@@ -146,6 +146,13 @@ function schemaFor(m, html) {
     keywords: m.keywords || undefined, about: (m.about || []).map((a) => ({ '@type': 'Thing', name: a })),
     wordCount: html.replace(/<[^>]+>/g, ' ').split(/\s+/).filter(Boolean).length,
   });
+  if (m.type === 'scholarship') graph.push({
+    '@type': 'MonetaryGrant', '@id': `${SITE}/scholarship/#grant`, name: 'Brian Albert Cornelius Bonnick Scholarship',
+    description: 'A one-time $1,000 scholarship for tuition, books or other educational expenses, open to elementary, middle, high school and college students. Created to carry on the legacy of the late Brian A.C. Bonnick.',
+    amount: { '@type': 'MonetaryAmount', value: 1000, currency: 'USD' },
+    funder: { '@type': 'Organization', name: 'BACB21Co', url: 'https://www.bacb21.org' },
+    url: `${SITE}/scholarship/`, sameAs: 'https://www.bacb21.org/scholarship/',
+  });
   if (m.type === 'local') graph.push({
     '@type': 'Place', name: `${C.city}, ${C.regionName}`, geo: { '@type': 'GeoCoordinates', latitude: C.geo.lat, longitude: C.geo.lng },
     containedInPlace: { '@type': 'State', name: C.regionName },
@@ -261,6 +268,7 @@ ${body}
         <li><a href="/tutoring-loganville-ga/">Tutoring in Loganville, GA</a></li>
         <li><a href="/resources/">Parent Resources</a></li>
         <li><a href="/bacb21/">BACB21 &amp; Perfectly Stated</a></li>
+        <li><a href="/scholarship/">Brian A.C. Bonnick Scholarship</a></li>
       </ul>
     </div>
     <div>
