@@ -167,6 +167,7 @@ function schemaFor(m, html) {
 const NAV = [
   ['Programs', '/programs/'],
   ['About', '/about/'],
+  ['Scholar Zone', '/scholar-zone/'],
   ['Resources', '/resources/'],
   ['FAQ', '/faq/'],
   ['Contact', '/contact/'],
@@ -267,6 +268,7 @@ ${body}
         <li><a href="/programs/writing-tutoring/">Writing &amp; Language Arts</a></li>
         <li><a href="/programs/academic-support/">Academic Support &amp; Enrichment</a></li>
         <li><a href="/tutoring-loganville-ga/">Tutoring in Loganville, GA</a></li>
+        <li><a href="/scholar-zone/">Scholar Zone (free practice)</a></li>
         <li><a href="/resources/">Parent Resources</a></li>
         <li><a href="/bacb21/">BACB21 &amp; Perfectly Stated</a></li>
         <li><a href="/scholarship/">Brian A.C. Bonnick Scholarship</a></li>
@@ -291,9 +293,10 @@ ${body}
     <ul class="footer-mini"><li><a href="/about/">About</a></li><li><a href="/faq/">FAQ</a></li><li><a href="/enroll/">Enroll</a></li><li><a href="/contact/">Contact</a></li></ul>
   </div>
 </footer>
-${m.type === 'enroll' ? '' : `<div class="mobile-cta" aria-label="Quick actions"><a class="btn btn-ghost btn-sm" href="tel:${C.phoneE164}"><svg class="i" aria-hidden="true"><use href="#i-phone"/></svg>Call</a><a class="btn btn-gold btn-sm" href="/enroll/">Enroll Now</a></div>`}
+${['enroll', 'scholars'].includes(m.type) ? '' : `<div class="mobile-cta" aria-label="Quick actions"><a class="btn btn-ghost btn-sm" href="tel:${C.phoneE164}"><svg class="i" aria-hidden="true"><use href="#i-phone"/></svg>Call</a><a class="btn btn-gold btn-sm" href="/enroll/">Enroll Now</a></div>`}
 <script src="/config.js?v=${BUILD_ID}" defer></script>
-<script src="/assets/js/main.${JS_HASH}.js" defer></script>
+<script src="/assets/js/main.${JS_HASH}.js" defer></script>${m.type === 'scholars' ? `
+<script src="/assets/js/scholar.${SZ_HASH}.js" defer></script>` : ''}
 </body>
 </html>
 `;
@@ -303,6 +306,7 @@ ${m.type === 'enroll' ? '' : `<div class="mobile-cta" aria-label="Quick actions"
 const hashOf = (p) => createHash('sha256').update(readFileSync(p)).digest('hex').slice(0, 10);
 const CSS_HASH = hashOf(join(SRC, 'assets/css/styles.css'));
 const JS_HASH = hashOf(join(SRC, 'assets/js/main.js'));
+const SZ_HASH = hashOf(join(SRC, 'assets/js/scholar.js'));
 const BUILD_ID = Date.now().toString(36);
 rmSync(OUT, { recursive: true, force: true });
 
@@ -337,6 +341,7 @@ if (existsSync(join(SRC, 'public'))) {
 // fingerprinted copies of CSS/JS so browsers and the CDN never mix versions
 copyFileSync(join(OUT, 'assets/css/styles.css'), join(OUT, `assets/css/styles.${CSS_HASH}.css`));
 copyFileSync(join(OUT, 'assets/js/main.js'), join(OUT, `assets/js/main.${JS_HASH}.js`));
+copyFileSync(join(OUT, 'assets/js/scholar.js'), join(OUT, `assets/js/scholar.${SZ_HASH}.js`));
 
 // form config for the browser
 write(join(OUT, 'config.js'), `window.GMS=${JSON.stringify({ email: C.email, endpoint: C.formEndpoint || '' })};`);
