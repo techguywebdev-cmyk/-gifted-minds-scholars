@@ -666,6 +666,34 @@ a.contact-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg)
   .g-item figcaption { font-size: 1.25rem; }
 }
 
+/* ---------- BACB21 page ---------- */
+.memorial-frame { position: relative; margin: 0 auto; width: 84%; background: #fff; padding: 16px 16px 0; border-radius: 160px 160px 18px 18px; box-shadow: var(--shadow-lg); border: 1px solid var(--line); }
+.memorial-frame img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 30%; border-radius: 146px 146px 10px 10px; filter: saturate(.92); }
+.memorial-frame figcaption { text-align: center; padding: 14px 8px 18px; }
+.memorial-frame figcaption strong { display: block; font-family: var(--display); color: var(--navy); font-size: 1.25rem; }
+.memorial-frame figcaption span { font-size: .78rem; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; color: var(--gold-ink); }
+.mf-flourish { position: absolute; width: 64px; height: 64px; }
+.mf-tl { left: -22px; top: 40px; } .mf-br { right: -22px; bottom: 60px; transform: rotate(180deg); }
+.memory { max-width: 760px; text-align: center; }
+.memory-kicker { font-family: var(--display); font-style: italic; font-size: 1.5rem; color: var(--gold-light); margin-bottom: 8px; }
+.memory h2 { font-size: clamp(2rem, 4.4vw, 3rem); letter-spacing: .02em; margin-bottom: 14px; }
+.memory-dates { display: flex; align-items: center; justify-content: center; gap: 18px; font-family: var(--display); font-size: 1.4rem; letter-spacing: .3em; color: #fff; margin: 0 0 8px; }
+.memory-dates i { width: 60px; height: 1px; background: var(--gold); }
+.memory-role { font-size: .8rem; font-weight: 800; letter-spacing: .18em; text-transform: uppercase; color: #c6cce6; }
+.memory-quote { margin: 30px auto 0; padding: 0; border: 0; }
+.memory-quote p { font-family: var(--display); font-size: clamp(1.4rem, 2.8vw, 2rem); line-height: 1.35; color: #fff; margin: 0; }
+.ps-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+.ps-card { display: flex; flex-direction: column; background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 16px 16px 20px; text-decoration: none; color: var(--ink); transition: transform .25s, box-shadow .25s; }
+.ps-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); color: var(--ink); }
+.ps-card img { width: 100%; aspect-ratio: 1; object-fit: contain; }
+.ps-card strong { font-family: var(--display); color: var(--navy); font-size: 1.1rem; margin-top: 12px; }
+.ps-card span { font-size: .85rem; color: var(--muted); font-weight: 600; }
+.bacb-band { display: grid; grid-template-columns: auto 1fr auto; gap: 24px; align-items: center; background: var(--paper); border: 1px solid var(--line); border-radius: 24px; padding: 22px 26px; box-shadow: var(--shadow); }
+.bacb-band img { width: 72px; height: 72px; border-radius: 50%; object-fit: cover; object-position: 50% 30%; border: 3px solid var(--gold-pale); }
+.bacb-band h2 { font-size: 1.3rem; margin: 0 0 4px; }
+.bacb-band p { margin: 0; color: var(--muted); font-size: .95rem; }
+@media (max-width: 900px) { .ps-grid { grid-template-columns: 1fr 1fr; } .bacb-band { grid-template-columns: auto 1fr; } .bacb-band .btn { grid-column: 1 / -1; } }
+
 /* ---------- reveal ---------- */
 .reveal { opacity: 0; transform: translateY(18px); transition: opacity .7s ease, transform .7s ease; }
 .reveal.is-in { opacity: 1; transform: none; }
