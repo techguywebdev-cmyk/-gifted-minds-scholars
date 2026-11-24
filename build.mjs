@@ -4,6 +4,7 @@
 
 import { readFileSync, writeFileSync, mkdirSync, rmSync, readdirSync, statSync, copyFileSync, existsSync } from 'node:fs';
 import { join, dirname, relative } from 'node:path';
+import { createHash } from 'node:crypto';
 
 const ROOT = dirname(new URL(import.meta.url).pathname);
 const SRC = join(ROOT, 'src');
@@ -217,7 +218,7 @@ function layout(m, body) {
 <link rel="manifest" href="/site.webmanifest">
 <link rel="preload" href="/assets/fonts/playfair.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/jakarta.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/assets/css/styles.css?v=${BUILD_ID}">
+<link rel="stylesheet" href="/assets/css/styles.${CSS_HASH}.css">
 ${m.preload || ''}
 <script type="application/ld+json">${schemaFor(m, body)}</script>${C.ga4Id ? `
 <script async src="https://www.googletagmanager.com/gtag/js?id=${C.ga4Id}"></script>
@@ -291,14 +292,17 @@ ${body}
   </div>
 </footer>
 ${m.type === 'enroll' ? '' : `<div class="mobile-cta" aria-label="Quick actions"><a class="btn btn-ghost btn-sm" href="tel:${C.phoneE164}"><svg class="i" aria-hidden="true"><use href="#i-phone"/></svg>Call</a><a class="btn btn-gold btn-sm" href="/enroll/">Enroll Now</a></div>`}
-<script src="/assets/js/config.js?v=${BUILD_ID}" defer></script>
-<script src="/assets/js/main.js?v=${BUILD_ID}" defer></script>
+<script src="/config.js?v=${BUILD_ID}" defer></script>
+<script src="/assets/js/main.${JS_HASH}.js" defer></script>
 </body>
 </html>
 `;
 }
 
 // ---------- build ----------
+const hashOf = (p) => createHash('sha256').update(readFileSync(p)).digest('hex').slice(0, 10);
+const CSS_HASH = hashOf(join(SRC, 'assets/css/styles.css'));
+const JS_HASH = hashOf(join(SRC, 'assets/js/main.js'));
 const BUILD_ID = Date.now().toString(36);
 rmSync(OUT, { recursive: true, force: true });
 
@@ -330,8 +334,12 @@ if (existsSync(join(SRC, 'public'))) {
   }
 }
 
+// fingerprinted copies of CSS/JS so browsers and the CDN never mix versions
+copyFileSync(join(OUT, 'assets/css/styles.css'), join(OUT, `assets/css/styles.${CSS_HASH}.css`));
+copyFileSync(join(OUT, 'assets/js/main.js'), join(OUT, `assets/js/main.${JS_HASH}.js`));
+
 // form config for the browser
-write(join(OUT, 'assets/js/config.js'), `window.GMS=${JSON.stringify({ email: C.email, endpoint: C.formEndpoint || '' })};`);
+write(join(OUT, 'config.js'), `window.GMS=${JSON.stringify({ email: C.email, endpoint: C.formEndpoint || '' })};`);
 
 // sitemap (with image entries)
 const indexable = pages.filter((p) => !p.noindex).sort((a, b) => (b.priority || 0.5) - (a.priority || 0.5));
